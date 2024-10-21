@@ -1,0 +1,12 @@
+.header {
+    padding: 24px 0;
+    background-color: #F7F7F7;
+}
+
+.container {
+    display: flex;
+    width: 1440px;
+    padding: 0 64px;
+    margin: 0 auto;
+    gap: 450px;
+}

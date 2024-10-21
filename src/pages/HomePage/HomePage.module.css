@@ -1,0 +1,48 @@
+.homeSection {
+    background-image: url('../../../public/bgHome.jpg');
+    height: 92.6vh;
+    background-repeat: no-repeat;
+    background-size: cover;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: start;
+}
+
+.linkToCatalog {
+    width: 173px;
+    padding: 16px 60px;
+    color: #fff;
+    font-family: Inter;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 24px;
+    letter-spacing: -0.08px;
+    background-color: #E44848;
+    border-radius: 200px;
+    text-decoration: none;
+}
+
+.mainTitle {
+    font-family: Inter;
+    font-size: 48px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: 32px;
+    color: #f7f7f7;
+    margin-bottom: 16px;
+}
+
+.secondTitle {
+    font-family: Inter;
+    font-size: 24px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: 32px;
+    color: #f7f7f7;
+}
+
+.homeSection>div>div {
+    margin-bottom: 40px;
+}

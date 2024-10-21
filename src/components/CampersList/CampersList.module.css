@@ -1,0 +1,10 @@
+.campersList {
+    display: flex;
+    flex-direction: column;
+    gap: 32px;
+}
+
+.campersListItem {
+    padding: 24px;
+    width: 888px;
+}

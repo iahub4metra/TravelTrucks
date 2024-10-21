@@ -1,0 +1,39 @@
+*,
+*::after,
+*::before {
+  box-sizing: border-box;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p {
+  margin: 0;
+}
+
+ul,
+ol {
+  margin: 0;
+  padding: 0;
+  list-style-type: none;
+}
+
+img {
+  display: block;
+  max-width: 100%;
+}
+
+body {
+  padding: 0;
+  margin: 0;
+  color: #101828;
+}
+
+.container {
+  width: 1440px;
+  padding: 0 64px;
+  margin: 0 auto;
+}
