@@ -12,7 +12,8 @@ const Layout = () => {
                 <Suspense fallback={<p>Loading...</p>}>
                     <Routes>
                         <Route path="/" element={<HomePage/>} />
-                        <Route path="/catalog" element={<CatalogPage/>} />
+                        <Route path="/catalog" element={<CatalogPage />} />
+                        <Route path="/catalog/:camperId"/>
                     </Routes>
                 </Suspense>
                 

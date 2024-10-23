@@ -2,6 +2,7 @@
     width: 292px;
     height: 320px;
     object-fit: cover;
+    border-radius: 10px;
 }
 
 .bgDiv {
@@ -16,7 +17,7 @@
 }
 
 .starIcon {
-    fill: #FFC531;
+    fill: var(--Rating);
 }
 
 .camperDesc {
@@ -25,24 +26,28 @@
     -webkit-box-orient: vertical;
     -webkit-line-clamp: 1;
     overflow: hidden;
-    color: #475467;
+    color: var(--Text);
     text-overflow: ellipsis;
     font-family: Inter;
     font-size: 16px;
     font-style: normal;
     font-weight: 400;
     line-height: 24px;
+    margin-bottom: 24px;
 }
 
 .camperFilterList {
     display: flex;
     flex-wrap: wrap;
     gap: 8px;
+    margin-bottom: 24px;
+    max-height: 104px;
+    overflow: hidden;
 }
 
 .camperFilter {
     padding: 12px 18px;
-    background-color: #F2F4F7;
+    background-color: var(--Badges);
     border-radius: 100px;
     font-family: Inter;
     font-size: 16px;
@@ -50,5 +55,57 @@
     font-weight: 500;
     line-height: 24px;
     text-align: center;
-    color: #101828;
+    color: var(--Main);
+}
+
+.upperContCard {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 8px;
+}
+
+.upperContCard>h2,
+.upperContCard>p {
+    font-family: Inter;
+    font-size: 24px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: 32px;
+    color: var(--Main);
+}
+
+.ratingAndLocationCont {
+    display: flex;
+    gap: 16px;
+    margin-bottom: 24px;
+}
+
+.ratingAndLocationCont span {
+    display: flex;
+    align-items: center;
+    font-family: Inter;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 24px;
+    color: var(--Main);
+}
+
+.camperFilterList+a {
+    padding: 16px 60px;
+    background-color: var(--Button);
+    font-family: Inter;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 24px;
+    letter-spacing: -0.08px;
+    color: var(--White);
+    border-radius: 200px;
+    transition: background-color 250ms cubic-bezier(0.4, 0, 0.2, 1);
+    display: inline-block;
+}
+
+.camperFilterList+a:hover {
+    background-color: var(--Button-Hover);
 }

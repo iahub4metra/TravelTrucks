@@ -2,9 +2,29 @@
     display: flex;
     flex-direction: column;
     gap: 32px;
+    margin-bottom: 40px;
 }
 
 .campersListItem {
     padding: 24px;
     width: 888px;
+    border: solid 1px #DADDE1;
+    border-radius: 20px;
+}
+
+.btnLoadMore {
+    border-radius: 200px;
+    border: 1px solid var(--Gray-light);
+    padding: 16px 32px;
+    display: block;
+    font-family: Inter;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 24px;
+    letter-spacing: -0.08px;
+    color: var(--Main);
+    background-color: transparent;
+    cursor: pointer;
+    margin: 0 auto;
 }

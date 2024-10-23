@@ -14,7 +14,7 @@ export type Camper = {
     transmission: string,
     engine: string,
     AC: boolean,
-    bathroo: boolean,
+    bathroom: boolean,
     kitchen: boolean,
     TV: boolean,
     radio: boolean,

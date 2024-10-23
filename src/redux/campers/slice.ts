@@ -5,13 +5,15 @@ import { Camper } from "../../components/App/App.types";
 export type InitialState = {
     items: Camper[],
     loading: boolean,
-    modalIsOpen: boolean
+    modalIsOpen: boolean,
+    page: number
 }
 
 const initialValue: InitialState = {
     items: [],
     loading: false,
-    modalIsOpen: false
+    modalIsOpen: false,
+    page: 1
 }
 
 const handlePending = (state: InitialState) => {
@@ -28,6 +30,9 @@ const campersSlice = createSlice({
     reducers: {
         openModal: (state, action) => {
             state.modalIsOpen = true
+        },
+        increasePage: (state) => {
+            state.page += 1
         }
     },
     extraReducers: builder => {
@@ -40,5 +45,7 @@ const campersSlice = createSlice({
             .addCase(getCampers.rejected, handleRejected)
     }
 })
+
+export const {openModal, increasePage} = campersSlice.actions
 
 export const campersReducer = campersSlice.reducer

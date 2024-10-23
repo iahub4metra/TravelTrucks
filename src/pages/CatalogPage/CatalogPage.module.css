@@ -1,0 +1,7 @@
+.catalogSection>div {
+    display: grid;
+    grid-template-columns: 360px 888px;
+    grid-template-rows: 1fr;
+    grid-column-gap: 64px;
+    grid-row-gap: 0px;
+}

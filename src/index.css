@@ -4,6 +4,19 @@
   box-sizing: border-box;
 }
 
+:root {
+  --Main: #101828;
+  --Text: #475467;
+  --Gray: #6C717B;
+  --Button: #E44848;
+  --Button-Hover: #D84343;
+  --Rating: #FFC531;
+  --Gray-light: #DADDE1;
+  --Badges: #F2F4F7;
+  --Inputs: #F7F7F7;
+  --White: #FFF;
+}
+
 h1,
 h2,
 h3,
@@ -30,10 +43,15 @@ body {
   padding: 0;
   margin: 0;
   color: #101828;
+  font-family: Inter;
 }
 
 .container {
   width: 1440px;
   padding: 0 64px;
   margin: 0 auto;
+}
+
+a {
+  text-decoration: none;
 }
