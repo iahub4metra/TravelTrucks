@@ -1,7 +1,58 @@
+.contSelectLocations {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    position: relative;
+}
+
 .labelLocations {
     font-size: 16px;
     font-style: normal;
     font-weight: 400;
     line-height: 24px;
     color: var(--Gray);
+}
+
+.selectLocations {
+    border-radius: 12px;
+    background-color: var(--Inputs);
+    padding: 18px 18px 18px 48px;
+    border: none;
+    font-family: Inter;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 24px;
+    outline: transparent;
+    cursor: pointer;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+}
+
+.selectLocations::-ms-expand {
+    display: none;
+}
+
+
+
+.selectLocations option {
+    color: var(--Main);
+}
+
+.iconLocations {
+    position: absolute;
+    bottom: 20px;
+    width: 20px;
+    height: 20px;
+    left: 20px;
+}
+
+.iconArrowDownLocations {
+    position: absolute;
+    bottom: 20px;
+    width: 20px;
+    height: 20px;
+    right: 20px;
+    pointer-events: none;
 }

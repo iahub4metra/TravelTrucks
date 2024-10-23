@@ -55,3 +55,7 @@ body {
 a {
   text-decoration: none;
 }
+
+section {
+  padding: 48px 0;
+}

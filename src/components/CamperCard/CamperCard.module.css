@@ -18,6 +18,7 @@
 
 .starIcon {
     fill: var(--Rating);
+    margin-right: 4px;
 }
 
 .camperDesc {

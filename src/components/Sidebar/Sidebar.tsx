@@ -1,9 +1,11 @@
+import Filters from "../Filters/Filters";
 import LocationsSelect from "../LocationsSelect/LocationsSelect";
 
 const Sidebar = () => {
     return (
         <aside>
-            <LocationsSelect/>
+            <LocationsSelect />
+            <Filters/>
         </aside>
     );
 }
