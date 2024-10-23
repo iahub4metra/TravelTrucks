@@ -1,3 +1,9 @@
+.equipmentFiltersItem {
+    border: 1px solid var(--Gray-light);
+    border-radius: 12px;
+    padding: 16px 12px;
+}
+
 .sidebarFilter {
     font-family: Inter;
     font-size: 16px;
@@ -8,9 +14,7 @@
     letter-spacing: -0.08px;
     color: var(--Main);
     text-align: center;
-    border: 1px solid var(--Gray-light);
-    border-radius: 12px;
-    padding: 16px 12px;
+
 }
 
 .equipmentFiltersList {
