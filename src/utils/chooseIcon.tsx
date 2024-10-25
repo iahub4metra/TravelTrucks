@@ -7,29 +7,29 @@ import { BsFillFuelPumpDieselFill } from "react-icons/bs";
 import { FaGasPump } from "react-icons/fa";
 import { TbAutomaticGearbox, TbManualGearbox } from "react-icons/tb";
 
-export const chooseIcon = (filter: string) => {
+export const chooseIcon = (filter: string, className: string) => {
     switch (filter) {
         case "water":
-            return <IoWaterOutline/>
+            return <IoWaterOutline className={className} />
             break;
         case "AC":
-            return <MdOutlineAir />
+            return <MdOutlineAir className={className} />
             break;
         case "kitchen":
-            return <BsCupHot />
+            return <BsCupHot  className={className}/>
             break;
         case "TV":
-            return <HiOutlineTv />
+            return <HiOutlineTv  className={className}/>
             break;
         case 'radio':
-            return <PiRadioLight />
+            return <PiRadioLight  className={className}/>
             break;
         case 'bathroom':
-            return <PiShowerLight />
+            return <PiShowerLight  className={className}/>
             break;
         case "gas":
             return (
-                <svg width="32px" height="32px" fill="none" stroke="black">
+                <svg className={className} fill="none" stroke="black">
                     <use xlinkHref="../../public/filters.svg#gas">
                     </use>
                 </svg>
@@ -37,7 +37,7 @@ export const chooseIcon = (filter: string) => {
             break;
         case "microwave":
             return (
-                <svg width="32px" height="32px" fill="none" stroke="black">
+                <svg className={className} fill="none" stroke="black">
                     <use xlinkHref="../../public/filters.svg#microwave">
                     </use>
                 </svg>
@@ -45,7 +45,7 @@ export const chooseIcon = (filter: string) => {
             break;
         case "refrigerator":
             return (
-                <svg width="32px" height="32px" fill="none" stroke="black">
+                <svg className={className} fill="none" stroke="black">
                     <use xlinkHref="../../public/filters.svg#fridge">
                     </use>
                 </svg>
@@ -53,23 +53,47 @@ export const chooseIcon = (filter: string) => {
             break;
         case "hybrid":
             return (
-                <svg width="32px" height="32px" fill="none" stroke="black">
+                <svg className={className} fill="none" stroke="black">
                     <use xlinkHref="../../public/filters.svg#hybrid">
                     </use>
                 </svg>
             )
             break;
         case "diesel":
-            return <BsFillFuelPumpDieselFill />
+            return <BsFillFuelPumpDieselFill  className={className}/>
             break;
         case "petrol":
-            return <FaGasPump />
+            return <FaGasPump  className={className}/>
             break;
         case "manual":
-            return <TbManualGearbox />
+            return <TbManualGearbox  className={className}/>
             break;
         case "automatic":
-            return <TbAutomaticGearbox />
+            return <TbAutomaticGearbox  className={className}/>
+            break;
+        case "alcove":
+            return (
+                <svg  className={className} width="32px" height="32px" fill="none" stroke="black">
+                    <use xlinkHref="../../public/filters.svg#alcove">
+                    </use>
+                </svg>
+            )
+            break;
+        case "panelTruck":
+            return (
+                <svg  className={className} width="32px" height="32px"  fill="none" stroke="black">
+                    <use xlinkHref="../../public/filters.svg#van">
+                    </use>
+                </svg>
+            )
+            break;
+        case 'fullyIntegrated':
+            return (
+                <svg  className={className} width="32px" height="32px"  fill="none" stroke="black">
+                    <use xlinkHref="../../public/filters.svg#full">
+                    </use>
+                </svg>
+            )
             break;
         default:
             break;
