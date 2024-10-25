@@ -3,6 +3,7 @@ import { Camper } from "../App/App.types";
 import s from "./CamperCard.module.css"
 import { FaStar } from "react-icons/fa";
 import { PiMapTrifoldThin } from "react-icons/pi";
+import { chooseIcon } from "../../utils/chooseIcon";
 const CamperCard = ({ camper }: { camper: Camper }) => {
     
     const camperFilters = Object.keys(camper).filter(key => {
@@ -23,14 +24,19 @@ const CamperCard = ({ camper }: { camper: Camper }) => {
                 </div>
                 <p className={s.camperDesc}>{camper.description}</p>
                 <ul className={s.camperFilterList}>
-                    <li>
+                    <li>    
+                        {chooseIcon(camper.transmission, s.camperCardFeaturesIcon)}
                         <p className={s.camperFilter}>{camper.transmission.charAt(0).toUpperCase() + camper.transmission.slice(1)}</p>
                     </li>
                     <li>
+                        {chooseIcon(camper.engine, s.camperCardFeaturesIcon)}
                         <p className={s.camperFilter}>{camper.engine.charAt(0).toUpperCase() + camper.engine.slice(1)}</p>
                     </li>
                     {camperFilters.map(filter => (
-                        <li key={filter}><p className={s.camperFilter}>{filter.charAt(0).toUpperCase() + filter.slice(1)}</p></li>
+                        <li key={filter}>
+                            {chooseIcon(filter, s.camperCardFeaturesIcon)}
+                            <p className={s.camperFilter}>{filter.charAt(0).toUpperCase() + filter.slice(1)}</p>
+                        </li>
                     ))}
                 </ul>
                 <Link to="/catalog/:camperId">Show More</Link>
