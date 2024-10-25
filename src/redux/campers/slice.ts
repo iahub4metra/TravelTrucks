@@ -6,22 +6,26 @@ export type InitialState = {
     items: Camper[],
     loading: boolean,
     modalIsOpen: boolean,
-    page: number
+    page: number,
+    isError: boolean,
 }
 
 const initialValue: InitialState = {
     items: [],
     loading: false,
     modalIsOpen: false,
-    page: 1
+    page: 1,
+    isError: false
 }
 
 const handlePending = (state: InitialState) => {
     state.loading = true
+    state.isError = false
 }
 
 const handleRejected = (state: InitialState) => {
-    state.loading = false
+    state.loading = false;
+    state.isError = true
 }
 
 const campersSlice = createSlice({
@@ -39,7 +43,9 @@ const campersSlice = createSlice({
         builder
             .addCase(getCampers.pending, handlePending)
             .addCase(getCampers.fulfilled, (state: InitialState, action) => {
+                state.items = []
                 state.loading = false
+                state.isError = false
                 state.items = action.payload
             })
             .addCase(getCampers.rejected, handleRejected)
