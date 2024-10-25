@@ -3,8 +3,16 @@ import s from "./Filters.module.css"
 import { campersSelector } from "../../redux/campers/selectors";
 import { Camper } from "../App/App.types";
 import { chooseIcon } from "../../utils/chooseIcon";
+import { useDispatch } from "react-redux";
+import { AppDispatch } from "../../redux/store";
+import { writeToTemplate } from "../../redux/filters/slice";
+import { filterTemplateSelector } from "../../redux/filters/selectors";
 
 const Filters = () => {
+
+    const dispatch:AppDispatch = useDispatch()
+
+    const templateFilters = useSelector(filterTemplateSelector)
 
     const campers = useSelector(campersSelector);
 
@@ -14,7 +22,9 @@ const Filters = () => {
 
     const engineFilters = campers.map(filter => ({ key: 'engine', value: filter.engine }))
     
-    const transmissionFilters = campers.map(filter => ({key: 'transmission', value: filter.transmission}))
+    const transmissionFilters = campers.map(filter => ({ key: 'transmission', value: filter.transmission }))
+    
+    const typesFilter = campers.map(filter => ({key: 'form', value: filter.form}))
 
     const arr = Object.keys(campers[0]).filter(key => {
             return typeof campers[0][key as keyof Camper] === "boolean"
@@ -23,6 +33,10 @@ const Filters = () => {
     const equipmentFilters = [
         ...new Set(engineFilters.map(filter => JSON.stringify(filter))),
         ...new Set(transmissionFilters.map(filter => JSON.stringify(filter)))
+    ].map(item => JSON.parse(item))
+
+    const typeFilters = [
+        ...new Set(typesFilter.map(filter => JSON.stringify(filter)))
     ].map(item => JSON.parse(item))
 
     const booleanFilters = arr
@@ -35,10 +49,18 @@ const Filters = () => {
                 <ul className={s.equipmentFiltersList}>
                     {equipmentFilters.map((filter, index) => (
                         <li key={index} className={s.equipmentFiltersItem}>
-                            <input type="checkbox" name="filter" onClick={()=> console.log(`${filter.key}=${filter.value}`)
+                            <input
+                                className={s.checkbox}
+                                type="checkbox"
+                                name="filter"
+                                onClick={() => {
+                                    if (!templateFilters.includes(`${filter.key}=${filter.value}`)) {
+                                        dispatch(writeToTemplate(`${filter.key}=${filter.value}`))
+                                    }
+                                }
                             } />
                             <div>
-                                {chooseIcon(filter.value)}
+                                {chooseIcon(filter.value, s.filtersIcon)}
                                 <p className={s.sidebarFilter}>{filter.value.charAt(0).toUpperCase() + filter.value.slice(1)}</p>
                             </div>
                             
@@ -46,14 +68,46 @@ const Filters = () => {
                     ))}
                     {booleanFilters.map((filter, index) => (
                         <li key={index} className={s.equipmentFiltersItem}>
-                            <input type="checkbox" name="filters" onClick={()=> console.log(`${filter}=true`)
+                            <input
+                                className={s.checkbox}
+                                type="checkbox"
+                                name="filters"
+                                onClick={() => {
+                                    if (!templateFilters.includes(`${filter}=true`)) {
+                                        dispatch(writeToTemplate(`${filter}=true`))
+                                    }
+                                }
+                                    
                             } />
                             <div>
-                                {chooseIcon(filter)}
+                                {chooseIcon(filter, s.filtersIcon)}
                                 <p className={s.sidebarFilter}>{filter.charAt(0).toUpperCase() + filter.slice(1)}</p>
                             </div>
                         </li>
                     ))}
+                </ul>
+            </div>
+            <div>
+                <h3>Vehicle type</h3>
+                <ul className={s.equipmentFiltersList}>
+                    {typeFilters.map((filter, index) => (
+                        <li key={index} className={s.equipmentFiltersItem}>
+                            <input className={s.checkbox} type="checkbox" name="filters"  onClick={()=> {
+                                    if (!templateFilters.includes(`${filter.key}=${filter.value}`)) {
+                                        dispatch(writeToTemplate(`${filter.key}=${filter.value}`))
+                                    }
+                                }
+                            } />
+                            <div>
+                                {chooseIcon(filter.value, "")}
+                                <p className={s.sidebarFilter}>{
+                                    filter.value === "fullyIntegrated" ? ("Full") :
+                                    filter.value.charAt(0).toUpperCase() + filter.value.slice(1)
+                                }</p>
+                            </div>
+                        </li>
+                    ))}
+                    
                 </ul>
             </div>
         </div>
