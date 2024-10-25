@@ -46,10 +46,16 @@
     overflow: hidden;
 }
 
-.camperFilter {
+.camperFilterList li {
     padding: 12px 18px;
     background-color: var(--Badges);
     border-radius: 100px;
+    display: flex;
+    align-items: center;
+    gap: 4px;
+}
+
+.camperFilter {
     font-family: Inter;
     font-size: 16px;
     font-style: normal;
@@ -109,4 +115,9 @@
 
 .camperFilterList+a:hover {
     background-color: var(--Button-Hover);
+}
+
+.camperCardFeaturesIcon {
+    width: 20px;
+    height: 20px;
 }
