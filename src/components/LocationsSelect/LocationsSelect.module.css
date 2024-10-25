@@ -3,6 +3,7 @@
     flex-direction: column;
     gap: 8px;
     position: relative;
+    margin-bottom: 40px;
 }
 
 .labelLocations {
@@ -33,8 +34,6 @@
 .selectLocations::-ms-expand {
     display: none;
 }
-
-
 
 .selectLocations option {
     color: var(--Main);
