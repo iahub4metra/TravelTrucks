@@ -59,3 +59,9 @@ a {
 section {
   padding: 48px 0;
 }
+
+.discuss-wrapper {
+  position: absolute;
+  top: 40%;
+  right: 48%;
+}
