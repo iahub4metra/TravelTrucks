@@ -1,7 +1,11 @@
-.equipmentFiltersItem {
+.equipmentFiltersItem div {
     border: 1px solid var(--Gray-light);
     border-radius: 12px;
     padding: 16px 12px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;
 }
 
 .sidebarFilter {
@@ -21,8 +25,46 @@
     display: flex;
     flex-wrap: wrap;
     gap: 12px 8px;
+    margin-bottom: 32px;
 }
 
 .equipmentFiltersList li {
     width: 98px;
+    position: relative;
+}
+
+.checkbox {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    opacity: 0;
+}
+
+.filtersIcon {
+    width: 32px;
+    height: 32px;
+}
+
+.checkbox:checked+div {
+    border-color: var(--Button);
+}
+
+.contFilters>h3 {
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 24px;
+    color: var(--Text);
+    margin-bottom: 32px;
+}
+
+.contFilters>div>h3 {
+    color: var(--Main);
+    font-size: 20px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: 24px;
+    padding-bottom: 24px;
+    border-bottom: 1px solid var(--Gray-light);
+    margin-bottom: 24px;
 }
