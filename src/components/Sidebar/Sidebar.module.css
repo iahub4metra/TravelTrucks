@@ -1,0 +1,20 @@
+.btnSearch {
+    border-radius: 200px;
+    background: var(--Button, #E44848);
+    font-family: Inter;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 24px;
+    /* 150% */
+    letter-spacing: -0.08px;
+    color: var(--White);
+    border: none;
+    cursor: pointer;
+    padding: 16px 60px;
+    transition: background-color 250ms cubic-bezier(0.47, 0, 0.745, 0.715);
+}
+
+.btnSearch:hover {
+    background-color: var(--Button-Hover);
+}
