@@ -10,6 +10,16 @@ import { filterTemplateSelector } from "../../redux/filters/selectors";
 
 const Filters = () => {
 
+    const engineAndTransmFilters = [
+        { key: 'engine', value: 'diesel' },
+        { key: 'engine', value: 'petrol' },
+        { key: 'engine', value: 'hybrid'},
+        { key: 'transmission', value: 'automatic'},
+        { key: 'transmission', value: 'manual' }
+    ]
+
+    const booleanFilters = ['AC', 'bathroom', 'kitchen', 'TV', 'radio', 'refrigerator', 'microwave', 'gas', 'water']
+
     const dispatch:AppDispatch = useDispatch()
 
     const templateFilters = useSelector(filterTemplateSelector)
@@ -20,26 +30,11 @@ const Filters = () => {
         return <p>No campers available.</p>;
     }
 
-    const engineFilters = campers.map(filter => ({ key: 'engine', value: filter.engine }))
-    
-    const transmissionFilters = campers.map(filter => ({ key: 'transmission', value: filter.transmission }))
-    
-    const typesFilter = campers.map(filter => ({key: 'form', value: filter.form}))
-
-    const arr = Object.keys(campers[0]).filter(key => {
-            return typeof campers[0][key as keyof Camper] === "boolean"
-        })
-
-    const equipmentFilters = [
-        ...new Set(engineFilters.map(filter => JSON.stringify(filter))),
-        ...new Set(transmissionFilters.map(filter => JSON.stringify(filter)))
-    ].map(item => JSON.parse(item))
-
     const typeFilters = [
-        ...new Set(typesFilter.map(filter => JSON.stringify(filter)))
-    ].map(item => JSON.parse(item))
-
-    const booleanFilters = arr
+        {key: 'form', value: 'alcove'},
+        {key: 'form', value: 'fullyIntegrated'},
+        {key: 'form', value: 'panelTruck'}
+    ]
 
     return (
         <div className={s.contFilters}>
@@ -47,7 +42,7 @@ const Filters = () => {
             <div>
                 <h3>Vehicle equipment</h3>
                 <ul className={s.equipmentFiltersList}>
-                    {equipmentFilters.map((filter, index) => (
+                    {engineAndTransmFilters.map((filter, index) => (
                         <li key={index} className={s.equipmentFiltersItem}>
                             <input
                                 className={s.checkbox}
@@ -55,7 +50,7 @@ const Filters = () => {
                                 name="filter"
                                 onClick={() => {
                                     if (!templateFilters.includes(`${filter.key}=${filter.value}`)) {
-                                        dispatch(writeToTemplate(`${filter.key}=${filter.value}`))
+                                        dispatch(writeToTemplate(`${filter.key}=${filter.value}`))                                        
                                     }
                                 }
                             } />
@@ -72,9 +67,11 @@ const Filters = () => {
                                 className={s.checkbox}
                                 type="checkbox"
                                 name="filters"
-                                onClick={() => {
+                                onChange={() => {
                                     if (!templateFilters.includes(`${filter}=true`)) {
                                         dispatch(writeToTemplate(`${filter}=true`))
+                                        console.log(booleanFilters);
+                                        
                                     }
                                 }
                                     
@@ -92,9 +89,11 @@ const Filters = () => {
                 <ul className={s.equipmentFiltersList}>
                     {typeFilters.map((filter, index) => (
                         <li key={index} className={s.equipmentFiltersItem}>
-                            <input className={s.checkbox} type="checkbox" name="filters"  onClick={()=> {
+                            <input className={s.checkbox} type="radio" name="filters"  onClick={()=> {
                                     if (!templateFilters.includes(`${filter.key}=${filter.value}`)) {
                                         dispatch(writeToTemplate(`${filter.key}=${filter.value}`))
+                                        console.log(typeFilters);
+                                        
                                     }
                                 }
                             } />
