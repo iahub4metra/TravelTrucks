@@ -5,10 +5,13 @@ import { Camper } from "../App/App.types";
 import { chooseIcon } from "../../utils/chooseIcon";
 import { useDispatch } from "react-redux";
 import { AppDispatch } from "../../redux/store";
-import { writeToTemplate } from "../../redux/filters/slice";
+import { deleteFromTemplate, writeToTemplate } from "../../redux/filters/slice";
 import { filterTemplateSelector } from "../../redux/filters/selectors";
+import { useState } from "react";
 
 const Filters = () => {
+
+    const [selectedRadio, setSelectedRadio] = useState<String | null>(null)
 
     const engineAndTransmFilters = [
         { key: 'engine', value: 'diesel' },
@@ -25,6 +28,36 @@ const Filters = () => {
     const templateFilters = useSelector(filterTemplateSelector)
 
     const campers = useSelector(campersSelector);
+
+    const toggleFilters = (filterString: string) => {
+        if (templateFilters.includes(filterString)) {
+            dispatch(deleteFromTemplate(filterString))
+        } else {
+            dispatch(writeToTemplate(filterString))
+        }
+    }
+
+    const toggleRadio = (filter: { key: string, value: string }) => {
+        const filterString = `${filter.key}=${filter.value}`
+
+        if (templateFilters.includes(filterString)) {
+            dispatch(deleteFromTemplate(filterString))
+        } else {
+            templateFilters
+                .filter(f => f.startsWith(`${filter.key}=`))
+                .forEach(existingFilter => dispatch(deleteFromTemplate(existingFilter)));
+            dispatch(writeToTemplate(filterString))
+        }   
+
+
+        // if (selectedRadio === filterString) {
+        //     setSelectedRadio(null)
+        //     dispatch(deleteFromTemplate(filterString))
+        // } else {
+        //     setSelectedRadio(filterString)
+        //     dispatch(writeToTemplate(filterString))
+        // }
+    }
 
     if (campers.length === 0) {
         return <p>No campers available.</p>;
@@ -46,12 +79,13 @@ const Filters = () => {
                         <li key={index} className={s.equipmentFiltersItem}>
                             <input
                                 className={s.checkbox}
-                                type="checkbox"
-                                name="filter"
+                                type="radio"
+                                name={filter.key}
+                                checked={templateFilters.includes(`${filter.key}=${filter.value}`)}
+                                readOnly={true}
                                 onClick={() => {
-                                    if (!templateFilters.includes(`${filter.key}=${filter.value}`)) {
-                                        dispatch(writeToTemplate(`${filter.key}=${filter.value}`))                                        
-                                    }
+                                        toggleRadio(filter)                                       
+                                    
                                 }
                             } />
                             <div>
@@ -67,12 +101,9 @@ const Filters = () => {
                                 className={s.checkbox}
                                 type="checkbox"
                                 name="filters"
-                                onChange={() => {
-                                    if (!templateFilters.includes(`${filter}=true`)) {
-                                        dispatch(writeToTemplate(`${filter}=true`))
-                                        console.log(booleanFilters);
-                                        
-                                    }
+                                onClick={() => {
+                                        toggleFilters(`${filter}=true`)                                          
+                                    
                                 }
                                     
                             } />
@@ -89,14 +120,17 @@ const Filters = () => {
                 <ul className={s.equipmentFiltersList}>
                     {typeFilters.map((filter, index) => (
                         <li key={index} className={s.equipmentFiltersItem}>
-                            <input className={s.checkbox} type="radio" name="filters"  onClick={()=> {
-                                    if (!templateFilters.includes(`${filter.key}=${filter.value}`)) {
-                                        dispatch(writeToTemplate(`${filter.key}=${filter.value}`))
-                                        console.log(typeFilters);
-                                        
-                                    }
+                            <input
+                                className={s.checkbox}
+                                type="radio"
+                                name="filters"
+                                checked={templateFilters.includes(`${filter.key}=${filter.value}`)}
+                                readOnly={true}
+                                onClick={() => {
+                                        toggleRadio(filter) 
+                                    } 
                                 }
-                            } />
+                            />
                             <div>
                                 {chooseIcon(filter.value, "")}
                                 <p className={s.sidebarFilter}>{
