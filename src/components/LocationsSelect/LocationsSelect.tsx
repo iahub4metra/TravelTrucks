@@ -1,6 +1,4 @@
-import { useSelector } from "react-redux";
 import s from "./LocationsSelect.module.css"
-import { campersSelector } from "../../redux/campers/selectors";
 import { PiMapTrifoldThin } from "react-icons/pi";
 import { IoIosArrowDown } from "react-icons/io";
 import { useDispatch } from "react-redux";
@@ -9,20 +7,19 @@ import { writeToTemplate } from "../../redux/filters/slice";
 
 const LocationsSelect = () => {
     const dispatch: AppDispatch = useDispatch()
-    const campers = useSelector(campersSelector)
 
-    const locations = [...new Set(campers.map(camper => camper.location))]
+    const locations = ['Ukraine, Kyiv', 'Ukraine, Poltava', 'Ukraine, Dnipro', 'Ukraine, Odesa', 'Ukraine, Kharkiv', 'Ukraine, Sumy', 'Ukraine, Lviv']
 
     const handleChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
         const location = e.target.value;
-        dispatch(writeToTemplate(location))
-        console.log(location);
+        dispatch(writeToTemplate(location))        
     }
 
     return (
         <div className={s.contSelectLocations}>  
             <label className={s.labelLocations} htmlFor="selectLocations">Location</label>
             <select className={s.selectLocations} name="locationsFilter" id="selectLocations" onChange={handleChange}>
+                <option value="">Select location</option>
                 {locations.map((location, index) => (
                     <option value={`location=${location}`} key={index}>{location}</option>
                 ))}
