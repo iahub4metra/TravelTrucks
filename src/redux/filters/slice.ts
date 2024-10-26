@@ -17,6 +17,9 @@ const filtersSlice = createSlice({
     reducers: {
         writeToTemplate: (state, action) => {
             state.template = [...state.template, action.payload]
+        },
+        deleteFromTemplate: (state, action) => {
+            state.template = state.template.filter(f => f !== action.payload)
         }
     },
     extraReducers: builder => {
@@ -29,6 +32,6 @@ const filtersSlice = createSlice({
     }
 })
 
-export const { writeToTemplate } = filtersSlice.actions
+export const { writeToTemplate, deleteFromTemplate } = filtersSlice.actions
 
 export const filtersReducer = filtersSlice.reducer
