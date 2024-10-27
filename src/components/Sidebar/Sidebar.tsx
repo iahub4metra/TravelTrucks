@@ -5,17 +5,15 @@ import s from "./Sidebar.module.css"
 import { AppDispatch } from "../../redux/store";
 import { useSelector } from "react-redux";
 import { filterSelector, filterTemplateSelector } from "../../redux/filters/selectors";
-import { compareFilters } from "../../redux/filters/operations";
 import { getCampers } from "../../redux/campers/operations";
+import { eraseFilter, joinFilters } from "../../redux/filters/slice";
 
 const Sidebar = () => {
 
     const dispatch: AppDispatch = useDispatch()
     const filters = useSelector(filterSelector)
-    const templatefilters = useSelector(filterTemplateSelector)
 
-    const handleClick = () => {
-        dispatch(compareFilters(templatefilters))
+    const handleClick = async () => {
         dispatch(getCampers(filters))
     }
 
