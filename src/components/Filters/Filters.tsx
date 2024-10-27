@@ -5,7 +5,7 @@ import { Camper } from "../App/App.types";
 import { chooseIcon } from "../../utils/chooseIcon";
 import { useDispatch } from "react-redux";
 import { AppDispatch } from "../../redux/store";
-import { deleteFromTemplate, writeToTemplate } from "../../redux/filters/slice";
+import { deleteFromTemplate, joinFilters, writeToTemplate } from "../../redux/filters/slice";
 import { filterTemplateSelector } from "../../redux/filters/selectors";
 import { useState } from "react";
 
@@ -34,6 +34,7 @@ const Filters = () => {
             dispatch(deleteFromTemplate(filterString))
         } else {
             dispatch(writeToTemplate(filterString))
+            dispatch(joinFilters())
         }
     }
 
@@ -47,16 +48,8 @@ const Filters = () => {
                 .filter(f => f.startsWith(`${filter.key}=`))
                 .forEach(existingFilter => dispatch(deleteFromTemplate(existingFilter)));
             dispatch(writeToTemplate(filterString))
+            dispatch(joinFilters())
         }   
-
-
-        // if (selectedRadio === filterString) {
-        //     setSelectedRadio(null)
-        //     dispatch(deleteFromTemplate(filterString))
-        // } else {
-        //     setSelectedRadio(filterString)
-        //     dispatch(writeToTemplate(filterString))
-        // }
     }
 
     if (campers.length === 0) {
