@@ -1,5 +1,4 @@
 import { createSlice } from "@reduxjs/toolkit";
-import { compareFilters } from "./operations";
 
 type InitialState = {
     filter: string,
@@ -17,18 +16,17 @@ const filtersSlice = createSlice({
     reducers: {
         writeToTemplate: (state, action) => {
             state.template = [...state.template, action.payload]
+        },
+        deleteFromTemplate: (state, action) => {
+            state.template = state.template.filter(f => f !== action.payload)
+        },
+        joinFilters: (state) => {
+            state.filter = ""
+            state.filter = state.template.join('&')
         }
     },
-    extraReducers: builder => {
-        builder
-            .addCase(compareFilters.fulfilled, (state: InitialState, action) => {
-                state.filter = '';
-                state.filter = action.payload
-                state.template =[]
-            })
-    }
 })
 
-export const { writeToTemplate } = filtersSlice.actions
+export const { writeToTemplate, deleteFromTemplate, joinFilters } = filtersSlice.actions
 
 export const filtersReducer = filtersSlice.reducer

@@ -16,7 +16,7 @@ const CatalogPage = () => {
     const error = useSelector(errorSelector)
     useEffect(() => {
         dispatch(getCampers(filters))
-    }, [dispatch, filters])
+    }, [dispatch])
     
     return (
         <section className={s.catalogSection}>

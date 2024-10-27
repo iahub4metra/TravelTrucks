@@ -21,6 +21,7 @@ const initialValue: InitialState = {
 const handlePending = (state: InitialState) => {
     state.loading = true
     state.isError = false
+    state.items =[]
 }
 
 const handleRejected = (state: InitialState) => {
@@ -43,7 +44,6 @@ const campersSlice = createSlice({
         builder
             .addCase(getCampers.pending, handlePending)
             .addCase(getCampers.fulfilled, (state: InitialState, action) => {
-                state.items = []
                 state.loading = false
                 state.isError = false
                 state.items = action.payload

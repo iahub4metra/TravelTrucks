@@ -5,10 +5,23 @@ import { Camper } from "../App/App.types";
 import { chooseIcon } from "../../utils/chooseIcon";
 import { useDispatch } from "react-redux";
 import { AppDispatch } from "../../redux/store";
-import { writeToTemplate } from "../../redux/filters/slice";
+import { deleteFromTemplate, joinFilters, writeToTemplate } from "../../redux/filters/slice";
 import { filterTemplateSelector } from "../../redux/filters/selectors";
+import { useState } from "react";
 
 const Filters = () => {
+
+    const [selectedRadio, setSelectedRadio] = useState<String | null>(null)
+
+    const engineAndTransmFilters = [
+        { key: 'engine', value: 'diesel' },
+        { key: 'engine', value: 'petrol' },
+        { key: 'engine', value: 'hybrid'},
+        { key: 'transmission', value: 'automatic'},
+        { key: 'transmission', value: 'manual' }
+    ]
+
+    const booleanFilters = ['AC', 'bathroom', 'kitchen', 'TV', 'radio', 'refrigerator', 'microwave', 'gas', 'water']
 
     const dispatch:AppDispatch = useDispatch()
 
@@ -16,30 +29,38 @@ const Filters = () => {
 
     const campers = useSelector(campersSelector);
 
+    const toggleFilters = (filterString: string) => {
+        if (templateFilters.includes(filterString)) {
+            dispatch(deleteFromTemplate(filterString))
+        } else {
+            dispatch(writeToTemplate(filterString))
+            dispatch(joinFilters())
+        }
+    }
+
+    const toggleRadio = (filter: { key: string, value: string }) => {
+        const filterString = `${filter.key}=${filter.value}`
+
+        if (templateFilters.includes(filterString)) {
+            dispatch(deleteFromTemplate(filterString))
+        } else {
+            templateFilters
+                .filter(f => f.startsWith(`${filter.key}=`))
+                .forEach(existingFilter => dispatch(deleteFromTemplate(existingFilter)));
+            dispatch(writeToTemplate(filterString))
+            dispatch(joinFilters())
+        }   
+    }
+
     if (campers.length === 0) {
         return <p>No campers available.</p>;
     }
 
-    const engineFilters = campers.map(filter => ({ key: 'engine', value: filter.engine }))
-    
-    const transmissionFilters = campers.map(filter => ({ key: 'transmission', value: filter.transmission }))
-    
-    const typesFilter = campers.map(filter => ({key: 'form', value: filter.form}))
-
-    const arr = Object.keys(campers[0]).filter(key => {
-            return typeof campers[0][key as keyof Camper] === "boolean"
-        })
-
-    const equipmentFilters = [
-        ...new Set(engineFilters.map(filter => JSON.stringify(filter))),
-        ...new Set(transmissionFilters.map(filter => JSON.stringify(filter)))
-    ].map(item => JSON.parse(item))
-
     const typeFilters = [
-        ...new Set(typesFilter.map(filter => JSON.stringify(filter)))
-    ].map(item => JSON.parse(item))
-
-    const booleanFilters = arr
+        {key: 'form', value: 'alcove'},
+        {key: 'form', value: 'fullyIntegrated'},
+        {key: 'form', value: 'panelTruck'}
+    ]
 
     return (
         <div className={s.contFilters}>
@@ -47,16 +68,17 @@ const Filters = () => {
             <div>
                 <h3>Vehicle equipment</h3>
                 <ul className={s.equipmentFiltersList}>
-                    {equipmentFilters.map((filter, index) => (
+                    {engineAndTransmFilters.map((filter, index) => (
                         <li key={index} className={s.equipmentFiltersItem}>
                             <input
                                 className={s.checkbox}
-                                type="checkbox"
-                                name="filter"
+                                type="radio"
+                                name={filter.key}
+                                checked={templateFilters.includes(`${filter.key}=${filter.value}`)}
+                                readOnly={true}
                                 onClick={() => {
-                                    if (!templateFilters.includes(`${filter.key}=${filter.value}`)) {
-                                        dispatch(writeToTemplate(`${filter.key}=${filter.value}`))
-                                    }
+                                        toggleRadio(filter)                                       
+                                    
                                 }
                             } />
                             <div>
@@ -73,9 +95,8 @@ const Filters = () => {
                                 type="checkbox"
                                 name="filters"
                                 onClick={() => {
-                                    if (!templateFilters.includes(`${filter}=true`)) {
-                                        dispatch(writeToTemplate(`${filter}=true`))
-                                    }
+                                        toggleFilters(`${filter}=true`)                                          
+                                    
                                 }
                                     
                             } />
@@ -92,12 +113,17 @@ const Filters = () => {
                 <ul className={s.equipmentFiltersList}>
                     {typeFilters.map((filter, index) => (
                         <li key={index} className={s.equipmentFiltersItem}>
-                            <input className={s.checkbox} type="checkbox" name="filters"  onClick={()=> {
-                                    if (!templateFilters.includes(`${filter.key}=${filter.value}`)) {
-                                        dispatch(writeToTemplate(`${filter.key}=${filter.value}`))
-                                    }
+                            <input
+                                className={s.checkbox}
+                                type="radio"
+                                name="filters"
+                                checked={templateFilters.includes(`${filter.key}=${filter.value}`)}
+                                readOnly={true}
+                                onClick={() => {
+                                        toggleRadio(filter) 
+                                    } 
                                 }
-                            } />
+                            />
                             <div>
                                 {chooseIcon(filter.value, "")}
                                 <p className={s.sidebarFilter}>{
