@@ -20,9 +20,6 @@ const filtersSlice = createSlice({
         deleteFromTemplate: (state, action) => {
             state.template = state.template.filter(f => f !== action.payload)
         },
-        eraseFilter: (state) => {
-            state.filter =''
-        },
         joinFilters: (state) => {
             state.filter = ""
             state.filter = state.template.join('&')
@@ -30,6 +27,6 @@ const filtersSlice = createSlice({
     },
 })
 
-export const { writeToTemplate, deleteFromTemplate, eraseFilter, joinFilters } = filtersSlice.actions
+export const { writeToTemplate, deleteFromTemplate, joinFilters } = filtersSlice.actions
 
 export const filtersReducer = filtersSlice.reducer
