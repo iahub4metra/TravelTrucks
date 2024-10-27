@@ -18,6 +18,7 @@ const filtersSlice = createSlice({
             state.template = [...state.template, action.payload]
         },
         deleteFromTemplate: (state, action) => {
+            state.filter =""
             state.template = state.template.filter(f => f !== action.payload)
         },
         joinFilters: (state) => {
