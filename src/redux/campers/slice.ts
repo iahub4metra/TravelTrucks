@@ -57,8 +57,9 @@ const campersSlice = createSlice({
             })
             .addCase(getCamperById.rejected, handleRejected)
             .addCase(sendFormData.fulfilled, (state:InitialState, action) => {
-                
+                state.isError = false
             })
+            .addCase(sendFormData.rejected, handleRejected)
     }
 })
 
