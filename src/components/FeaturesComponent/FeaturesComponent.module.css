@@ -1,0 +1,32 @@
+.featuresContOuter {
+    width: 631px;
+    padding: 44px 52px;
+    background-color: var(--Inputs);
+    border-radius: 10px;
+    display: flex;
+    flex-direction: column;
+    gap: 100px;
+}
+
+.featuresContOuter h3 {
+    color: var(--Main, #101828);
+    font-family: Inter;
+    font-size: 20px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: 24px;
+    padding-bottom: 24px;
+    border-bottom: 1px solid var(--Gray-light);
+    margin-bottom: 24px;
+}
+
+.detailsList {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+
+.featuresContOuter p {
+    display: flex;
+    justify-content: space-between;
+}
