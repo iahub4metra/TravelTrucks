@@ -6,7 +6,7 @@ import { filtersReducer } from "./filters/slice";
 
 const rootReducer = combineReducers({
     campers: campersReducer,
-    filters: filtersReducer
+    filters: filtersReducer,
 })
 
 export type RootState = ReturnType<typeof rootReducer>
