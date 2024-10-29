@@ -8,6 +8,7 @@ import Reviews from "../Reviews/Reviews";
 import Form from "../Form/Form";
 import clsx from "clsx";
 import { useEffect, useState } from "react";
+import Loader from "../Loader/Loader";
 
 
 const CamperDetails = () => {
@@ -25,34 +26,32 @@ const CamperDetails = () => {
         setActiveHash(location.hash)
     }, [location.hash, navigate]);
 
-    if (!camper) {
-        return <p>Camper details not found</p>
-    }
-
-
     return (
         <div>
-            <CamperInnerDiv camper={camper} s={s} />
-            <ul className={s.galleryList}>
-                {camper.gallery.map((photo, index) => (
-                    <li key={index}>
-                        <img src={photo.thumb} alt="" />
-                    </li>
-                ))}
-            </ul>
-            <p>{camper.description}</p>
-
-            <div className={s.navCont}>
-                <NavLink className={clsx(s.navLink, activeHash === "#features" && s.activeNavLink)} to="#features"><h3>Features</h3></NavLink>
-                <NavLink className={clsx(s.navLink, activeHash === "#reviews" && s.activeNavLink)} to="#reviews"><h3>Reviews</h3></NavLink>
-            </div>
-
-            <div className={s.lowerBox}>
-                <div className={s.contWithReviewsOrDetails}>
-                    {location.hash === "#reviews" ? <Reviews camper={camper}/> : <FeaturesComponent camper={camper} />}
-                </div>
-                <Form/>
-            </div>
+            {!camper ? <Loader /> : (
+                <>
+                    <CamperInnerDiv camper={camper} s={s} />
+                    <ul className={s.galleryList}>
+                        {camper.gallery.map((photo, index) => (
+                            <li key={index}>
+                                <img src={photo.thumb} alt="" />
+                            </li>
+                        ))}
+                    </ul>
+                    <p>{camper.description}</p>
+                    <div className={s.navCont}>
+                            <NavLink className={clsx(s.navLink, activeHash === "#features" && s.activeNavLink)} to="#features"><h3>Features</h3></NavLink>
+                            <NavLink className={clsx(s.navLink, activeHash === "#reviews" && s.activeNavLink)} to="#reviews"><h3>Reviews</h3></NavLink>
+                       </div>
+                    <div className={s.lowerBox}>
+                        <div className={s.contWithReviewsOrDetails}>
+                            {location.hash === "#reviews" ? <Reviews camper={camper}/> : <FeaturesComponent camper={camper} />}
+                        </div>
+                        <Form/>
+                    </div>
+                </>
+            )}
+            
         </div>
     );
 }
