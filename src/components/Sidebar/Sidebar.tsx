@@ -4,9 +4,8 @@ import LocationsSelect from "../LocationsSelect/LocationsSelect";
 import s from "./Sidebar.module.css"
 import { AppDispatch } from "../../redux/store";
 import { useSelector } from "react-redux";
-import { filterSelector, filterTemplateSelector } from "../../redux/filters/selectors";
+import { filterSelector } from "../../redux/filters/selectors";
 import { getCampers } from "../../redux/campers/operations";
-import { eraseFilter, joinFilters } from "../../redux/filters/slice";
 
 const Sidebar = () => {
 
