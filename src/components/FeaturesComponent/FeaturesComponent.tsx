@@ -1,4 +1,3 @@
-import { useLocation } from "react-router-dom";
 import { Camper } from "../App/App.types";
 import Features from "../CamperCard/Features";
 import s from "./FeaturesComponent.module.css"
