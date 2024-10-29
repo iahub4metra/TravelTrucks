@@ -7,3 +7,5 @@ export const pageSelector = (state: RootState) => state.campers.page
 export const loadingSelector = (state: RootState) => state.campers.loading
 
 export const errorSelector = (state: RootState) => state.campers.isError
+
+export const camperSelector = (state: RootState) => state.campers.selectedCamper
