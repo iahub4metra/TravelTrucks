@@ -7,6 +7,8 @@ import { sendFormData } from "../../redux/campers/operations";
 import { Field, Formik, FormikHelpers, Form as FormikForm, ErrorMessage } from "formik";
 import * as Yup from "yup"
 import toast, {Toaster} from 'react-hot-toast'
+import { useSelector } from "react-redux";
+import { errorSelector } from "../../redux/campers/selectors";
 
 interface FormValues {
     name: string;
@@ -25,7 +27,7 @@ const initialData = {
 const Form = () => {    
 
     const dispatch: AppDispatch = useDispatch()
-
+    const isError = useSelector(errorSelector)
 
      const validationSchema = Yup.object().shape({
         name: Yup.string().required("Name is required"),
@@ -42,6 +44,10 @@ const Form = () => {
             bookingDate: values.bookingDate ? values.bookingDate.toISOString() : undefined
         };
         dispatch(sendFormData(bookingData));
+        if (!isError) {
+            toast.error("Something went wrong!", { position: "top-right" })
+            return
+        }
         FormikHelpers.setSubmitting(false);
         toast.success("Successfully booked a camper!", { position: 'top-right' })
         FormikHelpers.resetForm()
