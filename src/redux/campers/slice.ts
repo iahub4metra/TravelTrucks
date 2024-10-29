@@ -1,5 +1,5 @@
 import { PayloadAction, createSlice } from "@reduxjs/toolkit";
-import { getCampers } from "./operations";
+import { getCamperById, getCampers, sendFormData } from "./operations";
 import { Camper } from "../../components/App/App.types";
 
 export type InitialState = {
@@ -8,6 +8,7 @@ export type InitialState = {
     modalIsOpen: boolean,
     page: number,
     isError: boolean,
+    selectedCamper: Camper | null
 }
 
 const initialValue: InitialState = {
@@ -15,7 +16,8 @@ const initialValue: InitialState = {
     loading: false,
     modalIsOpen: false,
     page: 1,
-    isError: false
+    isError: false,
+    selectedCamper: null
 }
 
 const handlePending = (state: InitialState) => {
@@ -49,6 +51,14 @@ const campersSlice = createSlice({
                 state.items = action.payload
             })
             .addCase(getCampers.rejected, handleRejected)
+            .addCase(getCamperById.pending, handlePending)
+            .addCase(getCamperById.fulfilled, (state: InitialState, action: PayloadAction<Camper>) => {
+                state.selectedCamper = action.payload
+            })
+            .addCase(getCamperById.rejected, handleRejected)
+            .addCase(sendFormData.fulfilled, (state:InitialState, action) => {
+                
+            })
     }
 })
 
