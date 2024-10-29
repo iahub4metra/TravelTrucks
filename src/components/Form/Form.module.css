@@ -1,0 +1,139 @@
+.formOuterCont {
+    display: flex;
+    flex-direction: column;
+    width: 631px;
+    border-radius: 10px;
+    border: 1px solid var(--Gray-light);
+    align-items: center;
+    padding: 44px;
+}
+
+.formOuterCont h3 {
+    color: var(--Main, #101828);
+    font-family: Inter;
+    font-size: 20px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: 24px;
+    margin-bottom: 8px;
+}
+
+.formOuterCont>div {
+    width: 527px;
+    margin-bottom: 24px;
+}
+
+.formOuterCont form {
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+}
+
+.formOuterCont input {
+    border-radius: 12px;
+    background-color: var(--Inputs);
+    padding: 18px;
+    color: var(--Main);
+    font-family: Inter;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 24px;
+    outline: transparent;
+    border: none;
+    width: 527px;
+    height: 60px;
+}
+
+.formOuterCont input::placeholder {
+    color: var(--Gray);
+    font-family: Inter;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 24px;
+}
+
+.formOuterCont textarea {
+    height: 118px;
+    padding: 18px;
+    width: 527px;
+    color: var(--Gray, #6C717B);
+    font-family: Inter;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 24px;
+    border: none;
+    outline: transparent;
+    border-radius: 12px;
+    background-color: var(--Inputs);
+    resize: none;
+}
+
+.btnSubmit {
+    background-color: var(--Button);
+    transition: background-color 250ms cubic-bezier(0.455, 0.03, 0.515, 0.955);
+    display: block;
+    margin: 0 auto;
+    border: none;
+    padding: 16px 60px;
+    color: var(--White, #FFF);
+    font-family: Inter;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 24px;
+    letter-spacing: -0.08px;
+    border-radius: 200px;
+}
+
+.btnSubmit:hover {
+    background-color: var(--Button-Hover);
+}
+
+.formOuterCont>form>div {
+    position: relative;
+}
+
+.calendar {
+    background-color: #fff;
+    border-radius: 12px;
+    border: 1px solid var(--Text);
+    color: var(--Main, #101828);
+    text-align: center;
+    font-family: Inter;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: 120%;
+}
+
+.calendar>div>div {
+    background-color: #fff;
+}
+
+.calendar .dayCalendar {
+    text-align: center;
+    font-family: Inter;
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 120%;
+    margin: 4px 0;
+    padding: 5px;
+}
+
+.calendar .react-datepicker__day--selected {
+    background-color: var(--Text);
+    border-radius: 32px;
+}
+
+.errorMsg {
+    color: var(--Button);
+    font-family: Inter;
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 120%;
+}
