@@ -3,7 +3,9 @@ import Header from "../Header/Header";
 import { Suspense, lazy } from "react";
 
 const HomePage = lazy(()=> import('../../pages/HomePage/HomePage'))
-const CatalogPage = lazy(()=> import('../../pages/CatalogPage/CatalogPage'))
+const CatalogPage = lazy(() => import('../../pages/CatalogPage/CatalogPage'))
+const CamperPage = lazy(()=> import('../../pages/CamperPage/CamperPage'))
+const FeaturesComponent = lazy(()=> import('../FeaturesComponent/FeaturesComponent'))
 const Layout = () => {
     return (
         <>
@@ -13,7 +15,10 @@ const Layout = () => {
                     <Routes>
                         <Route path="/" element={<HomePage/>} />
                         <Route path="/catalog" element={<CatalogPage />} />
-                        <Route path="/catalog/:camperId"/>
+                        <Route path="/catalog/:camperId" element={<CamperPage />}>
+                            <Route path="#features"/>
+                            <Route path="#reviews"/>
+                        </Route>
                     </Routes>
                 </Suspense>
                 
