@@ -1,0 +1,28 @@
+.avatar {
+    background-color: var(--Badges);
+    color: var(--Button);
+    width: 60px;
+    height: 60px;
+    border-radius: 60px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-family: Inter;
+    font-size: 24px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: 32px;
+}
+
+.upperContReview {
+    display: flex;
+    gap: 16px;
+    align-items: center;
+    margin-bottom: 16px;
+}
+
+.reviewsList {
+    display: flex;
+    flex-direction: column;
+    gap: 44px;
+}
