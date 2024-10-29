@@ -1,17 +1,13 @@
 import { useSelector } from "react-redux";
 import s from "./Filters.module.css"
 import { campersSelector } from "../../redux/campers/selectors";
-import { Camper } from "../App/App.types";
 import { chooseIcon } from "../../utils/chooseIcon";
 import { useDispatch } from "react-redux";
 import { AppDispatch } from "../../redux/store";
 import { deleteFromTemplate, joinFilters, writeToTemplate } from "../../redux/filters/slice";
 import { filterTemplateSelector } from "../../redux/filters/selectors";
-import { useState } from "react";
 
 const Filters = () => {
-
-    const [selectedRadio, setSelectedRadio] = useState<String | null>(null)
 
     const engineAndTransmFilters = [
         { key: 'engine', value: 'diesel' },
@@ -50,10 +46,6 @@ const Filters = () => {
             dispatch(writeToTemplate(filterString))
             dispatch(joinFilters())
         }   
-    }
-
-    if (campers.length === 0) {
-        return <p>No campers available.</p>;
     }
 
     const typeFilters = [
