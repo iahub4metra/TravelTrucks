@@ -15,10 +15,7 @@ const Layout = () => {
                     <Routes>
                         <Route path="/" element={<HomePage/>} />
                         <Route path="/catalog" element={<CatalogPage />} />
-                        <Route path="/catalog/:camperId" element={<CamperPage />}>
-                            <Route path="#features"/>
-                            <Route path="#reviews"/>
-                        </Route>
+                        <Route path="/catalog/:camperId" element={<CamperPage />}/>
                     </Routes>
                 </Suspense>
                 
