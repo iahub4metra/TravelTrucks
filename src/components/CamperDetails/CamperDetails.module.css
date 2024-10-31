@@ -84,12 +84,16 @@
 
 .navLink {
     position: relative;
+    border: none;
+    cursor: pointer;
+    background-color: transparent;
 }
 
 .activeNavLink::after {
     content: '';
     position: absolute;
     bottom: -24px;
+    left: 4px;
     width: 85px;
     height: 3px;
     background-color: var(--Button);
