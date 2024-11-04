@@ -47,8 +47,8 @@ body {
 }
 
 .container {
-  width: 1440px;
-  padding: 0 64px;
+  width: 375px;
+  padding: 0 32px;
   margin: 0 auto;
 }
 
@@ -64,4 +64,18 @@ section {
   position: absolute;
   top: 40%;
   right: 48%;
+}
+
+
+@media screen and (min-width: 768px) {
+  .container {
+    width: 768px;
+  }
+}
+
+@media screen and (min-width: 1440px) {
+  .container {
+    width: 1440px;
+    padding: 0 64px;
+  }
 }
