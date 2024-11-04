@@ -30,7 +30,7 @@ const LocationsSelect = () => {
         <div className={s.contSelectLocations}>  
             <label className={s.labelLocations} htmlFor="selectLocations">Location</label>
             <select className={s.selectLocations} name="locationsFilter" id="selectLocations" onChange={handleChange}>
-                <option value="">Select location</option>
+                <option value="" disabled>City</option>
                 {locations.map((location, index) => (
                     <option value={`location=${location}`} key={index}>{location}</option>
                 ))}
