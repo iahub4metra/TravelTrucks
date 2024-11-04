@@ -1,12 +1,39 @@
 .header {
-    padding: 24px 0;
+    padding: 16px 0;
     background-color: #F7F7F7;
 }
 
 .container {
     display: flex;
-    width: 1440px;
-    padding: 0 64px;
+    justify-content: space-between;
+    align-items: center;
+    width: 375px;
+    padding: 0 32px;
     margin: 0 auto;
-    gap: 450px;
+}
+
+/* Tablet (768px and up) */
+@media screen and (min-width: 768px) {
+    .header {
+        padding: 24px 0;
+    }
+
+    .container {
+        width: 768px;
+        justify-content: normal;
+        gap: 200px;
+    }
+}
+
+/* Desktop (1440px and up) */
+@media screen and (min-width: 1440px) {
+    .header {
+        padding: 24px 0;
+    }
+
+    .container {
+        width: 1440px;
+        padding: 0 64px;
+        gap: 450px;
+    }
 }
