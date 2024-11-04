@@ -1,6 +1,9 @@
 .header {
     padding: 16px 0;
     background-color: #F7F7F7;
+    height: 6vh;
+    display: flex;
+    align-items: center;
 }
 
 .container {
