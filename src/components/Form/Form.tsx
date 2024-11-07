@@ -58,6 +58,7 @@ const Form = () => {
             <DatePicker
                 {...field}
                 {...props}
+                shouldCloseOnSelect={false}
                 selected={field.value}
                 onChange={(val) => form.setFieldValue(field.name, val)}
                 calendarClassName={s.calendar}
