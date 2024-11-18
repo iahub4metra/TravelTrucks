@@ -69,7 +69,6 @@ const Form = () => {
                 disabledKeyboardNavigation
                 wrapperClassName={"calendarWrapper"}
                 popperClassName={"popperCalendar"}
-                showPopperArrow={false}
             />
         );
     };
