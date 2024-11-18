@@ -1,14 +1,15 @@
 import DatePicker from "react-datepicker";
-import s from "./Form.module.css"
-import "react-datepicker/dist/react-datepicker.css"
-import { AppDispatch } from "../../redux/store";
 import { useDispatch } from "react-redux";
-import { sendFormData } from "../../redux/campers/operations";
 import { Field, Formik, FormikHelpers, Form as FormikForm, ErrorMessage } from "formik";
 import * as Yup from "yup"
 import toast, {Toaster} from 'react-hot-toast'
 import { useSelector } from "react-redux";
+import { AppDispatch } from "../../redux/store";
+import { sendFormData } from "../../redux/campers/operations";
 import { errorSelector } from "../../redux/campers/selectors";
+import "react-datepicker/dist/react-datepicker.css"
+import "./DatePickerForm.css"
+import s from "./Form.module.css"
 
 interface FormValues {
     name: string;
@@ -61,8 +62,14 @@ const Form = () => {
                 shouldCloseOnSelect={false}
                 selected={field.value}
                 onChange={(val) => form.setFieldValue(field.name, val)}
-                calendarClassName={s.calendar}
-                dayClassName={date => s.dayCalendar}
+                calendarClassName={"calendar"}
+                dayClassName={date => "dayCalendar"}
+                weekDayClassName={date => "weekCalendar"}
+                weekClassName={"week"}
+                disabledKeyboardNavigation
+                wrapperClassName={"calendarWrapper"}
+                popperClassName={"popperCalendar"}
+                showPopperArrow={false}
             />
         );
     };
@@ -83,7 +90,7 @@ const Form = () => {
                 onSubmit={handleSumbit}
                 validationSchema={validationSchema}
             >
-                    <FormikForm>
+                    <FormikForm autoComplete="off">
                     <div>
                         <Field type="text" name="name" placeholder="Name*" />
                         <ErrorMessage className={s.errorMsg} name="name" component="span"/>
