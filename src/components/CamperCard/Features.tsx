@@ -1,14 +1,16 @@
 import { chooseIcon } from "../../utils/chooseIcon";
 import { Camper } from "../App/App.types";
 import s from "./CamperCard.module.css"
-const Features = ({ camper }: { camper: Camper }) => {
+const Features = ({ camper, classNameCont }: { camper: Camper, classNameCont?: string}) => {
     
     const camperFilters = Object.keys(camper).filter(key => {
         return camper[key as keyof Camper] === true
     })
 
+    const listClassName = classNameCont ? classNameCont : s.camperFilterList
+
     return (
-        <ul className={s.camperFilterList}>
+        <ul className={listClassName}>
             <li>    
                 {chooseIcon(camper.transmission, s.camperCardFeaturesIcon)}
                 <p className={s.camperFilter}>{camper.transmission.charAt(0).toUpperCase() + camper.transmission.slice(1)}</p>
