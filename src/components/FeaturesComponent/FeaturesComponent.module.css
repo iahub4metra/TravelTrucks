@@ -1,11 +1,27 @@
 .featuresContOuter {
-    width: 631px;
-    padding: 44px 52px;
+    max-width: 631px;
+    padding: 24px 15px;
     background-color: var(--Inputs);
     border-radius: 10px;
     display: flex;
     flex-direction: column;
-    gap: 100px;
+}
+
+.featuresContComp {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+    margin-bottom: 24px;
+}
+
+.featuresContComp li {
+    padding: 10px 16px;
+    background-color: var(--Badges);
+    border-radius: 100px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 4px;
 }
 
 .featuresContOuter h3 {
@@ -29,4 +45,11 @@
 .featuresContOuter p {
     display: flex;
     justify-content: space-between;
+}
+
+@media screen and (min-width:768px) {
+    .featuresContOuter {
+        gap: 100px;
+        padding: 44px 52px;
+    }
 }
