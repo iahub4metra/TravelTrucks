@@ -11,7 +11,7 @@ const FeaturesComponent = ({camper}: {camper: Camper}) => {
     
     return (
         <div className={s.featuresContOuter}>
-            <Features camper={camper}/>
+            <Features classNameCont={s.featuresContComp} camper={camper}/>
             <div>
                 <h3>Vehicle Details</h3>
                 <ul className={s.detailsList}>
