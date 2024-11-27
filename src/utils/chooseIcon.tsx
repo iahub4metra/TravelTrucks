@@ -6,6 +6,8 @@ import { MdOutlineAir } from "react-icons/md";
 import { BsFillFuelPumpDieselFill } from "react-icons/bs";
 import { FaGasPump } from "react-icons/fa";
 import { TbAutomaticGearbox, TbManualGearbox } from "react-icons/tb";
+import sprite from "../../public/filters.svg"
+
 
 export const chooseIcon = (filter: string, className: string) => {
     switch (filter) {
@@ -30,7 +32,7 @@ export const chooseIcon = (filter: string, className: string) => {
         case "gas":
             return (
                 <svg className={className} fill="none" stroke="black">
-                    <use xlinkHref="../../public/filters.svg#gas">
+                    <use xlinkHref={`${sprite}#gas`}>
                     </use>
                 </svg>
             )
@@ -38,7 +40,7 @@ export const chooseIcon = (filter: string, className: string) => {
         case "microwave":
             return (
                 <svg className={className} fill="none" stroke="black">
-                    <use xlinkHref="../../public/filters.svg#microwave">
+                    <use xlinkHref={`${sprite}#microwave`}>
                     </use>
                 </svg>
             )
@@ -46,7 +48,7 @@ export const chooseIcon = (filter: string, className: string) => {
         case "refrigerator":
             return (
                 <svg className={className} fill="none" stroke="black">
-                    <use xlinkHref="../../public/filters.svg#fridge">
+                    <use xlinkHref={`${sprite}#fridge`}>
                     </use>
                 </svg>
             )
@@ -54,7 +56,7 @@ export const chooseIcon = (filter: string, className: string) => {
         case "hybrid":
             return (
                 <svg className={className} fill="none" stroke="black">
-                    <use xlinkHref="../../public/filters.svg#hybrid">
+                    <use xlinkHref={`${sprite}#hybrid`}>
                     </use>
                 </svg>
             )
@@ -74,7 +76,7 @@ export const chooseIcon = (filter: string, className: string) => {
         case "alcove":
             return (
                 <svg  className={className} width="32px" height="32px" fill="none" stroke="black">
-                    <use xlinkHref="../../public/filters.svg#alcove">
+                    <use xlinkHref={`${sprite}#alcove`}>
                     </use>
                 </svg>
             )
@@ -82,7 +84,7 @@ export const chooseIcon = (filter: string, className: string) => {
         case "panelTruck":
             return (
                 <svg  className={className} width="32px" height="32px"  fill="none" stroke="black">
-                    <use xlinkHref="../../public/filters.svg#van">
+                    <use xlinkHref={`${sprite}#van`}>
                     </use>
                 </svg>
             )
@@ -90,7 +92,7 @@ export const chooseIcon = (filter: string, className: string) => {
         case 'fullyIntegrated':
             return (
                 <svg  className={className} width="32px" height="32px"  fill="none" stroke="black">
-                    <use xlinkHref="../../public/filters.svg#full">
+                    <use xlinkHref={`${sprite}#full`}>
                     </use>
                 </svg>
             )
