@@ -13,6 +13,8 @@
 
 .innerCard {
     display: flex;
+    flex-direction: column;
+    align-items: center;
     gap: 24px;
 }
 
@@ -23,7 +25,8 @@
 
 .camperDesc {
     display: -webkit-box;
-    width: 525px;
+    max-width: 525px;
+    max-height: 48px;
     -webkit-box-orient: vertical;
     -webkit-line-clamp: 1;
     overflow: hidden;
@@ -142,4 +145,11 @@
 
 .favIconPressed {
     fill: var(--Button);
+}
+
+@media screen and (min-width:1440px) {
+    .innerCard {
+        flex-direction: row;
+        align-items: normal;
+    }
 }
