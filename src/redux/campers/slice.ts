@@ -8,7 +8,8 @@ export type InitialState = {
     modalIsOpen: boolean,
     page: number,
     isError: boolean,
-    selectedCamper: Camper | null
+    selectedCamper: Camper | null,
+    favCampers: Camper[]
 }
 
 const initialValue: InitialState = {
@@ -17,7 +18,8 @@ const initialValue: InitialState = {
     modalIsOpen: false,
     page: 1,
     isError: false,
-    selectedCamper: null
+    selectedCamper: null,
+    favCampers: JSON.parse(localStorage.getItem('favCampers') || "[]")
 }
 
 const handlePending = (state: InitialState) => {
@@ -40,6 +42,15 @@ const campersSlice = createSlice({
         },
         increasePage: (state) => {
             state.page += 1
+        },
+        addFavCamper: (state, action) => {
+            state.favCampers.push(action.payload)
+            localStorage.setItem('favCampers', JSON.stringify(state.favCampers))
+        },
+        deleteFavCamper: (state, action) => {
+            const updatedFav = state.favCampers.filter(favCamper => favCamper.id !== action.payload.id)
+            state.favCampers = updatedFav
+            localStorage.setItem('favCampers', JSON.stringify(state.favCampers))
         }
     },
     extraReducers: builder => {
@@ -63,6 +74,6 @@ const campersSlice = createSlice({
     }
 })
 
-export const {openModal, increasePage} = campersSlice.actions
+export const {openModal, increasePage, addFavCamper, deleteFavCamper} = campersSlice.actions
 
 export const campersReducer = campersSlice.reducer
