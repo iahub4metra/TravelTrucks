@@ -45,7 +45,7 @@ const Form = () => {
             bookingDate: values.bookingDate ? values.bookingDate.toISOString() : undefined
         };
         dispatch(sendFormData(bookingData));
-        if (!isError) {
+        if (isError) {
             toast.error("Something went wrong!", { position: "top-right" })
             return
         }
