@@ -34,9 +34,13 @@
 .galleryList {
     display: flex;
     gap: 32px;
-    align-items: center;
     margin: 28px 0;
-    justify-content: center;
+    overflow-x: scroll;
+    padding-bottom: 8px;
+}
+
+.galleryList li {
+    flex-shrink: 0;
 }
 
 .galleryList img {
@@ -108,5 +112,10 @@
     .lowerBox {
         flex-direction: row;
         align-items: normal;
+    }
+
+    .galleryList {
+        justify-content: center;
+        align-items: center;
     }
 }
