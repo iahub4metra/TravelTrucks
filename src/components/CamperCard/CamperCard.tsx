@@ -16,7 +16,7 @@ const CamperCard = ({ camper }: { camper: Camper }) => {
                 <CamperInnerDiv camper={camper} s={s} />
                 <p className={s.camperDesc}>{camper.description}</p>
                 <Features camper={camper}/>
-                <a target="_blank" href={`/catalog/${camper.id}`}>Show More</a>
+                <a target="_blank" href={`/catalog/${camper.id}`} rel="nooppper noreferrer">Show More</a>
             </div>
         </div>
     );
