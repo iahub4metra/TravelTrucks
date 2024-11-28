@@ -1,6 +1,5 @@
 import { useSelector } from "react-redux";
 import s from "./Filters.module.css"
-import { campersSelector } from "../../redux/campers/selectors";
 import { chooseIcon } from "../../utils/chooseIcon";
 import { useDispatch } from "react-redux";
 import { AppDispatch } from "../../redux/store";
@@ -22,8 +21,6 @@ const Filters = () => {
     const dispatch:AppDispatch = useDispatch()
 
     const templateFilters = useSelector(filterTemplateSelector)
-
-    const campers = useSelector(campersSelector);
 
     const toggleFilters = (filterString: string) => {
         if (templateFilters.includes(filterString)) {
