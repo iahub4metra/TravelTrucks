@@ -2,12 +2,14 @@ import { createSlice } from "@reduxjs/toolkit";
 
 type InitialState = {
     filter: string,
-    template: String[]
+    template: String[],
+    isOpen: boolean
 }
 
 const initialState: InitialState = {
     filter: '',
-    template: []
+    template: [],
+    isOpen: false
 }
 
 const filtersSlice = createSlice({
@@ -24,10 +26,13 @@ const filtersSlice = createSlice({
         joinFilters: (state) => {
             state.filter = ""
             state.filter = state.template.join('&')
+        },
+        openSidebar: (state) => {
+            state.isOpen = !state.isOpen
         }
     },
 })
 
-export const { writeToTemplate, deleteFromTemplate, joinFilters } = filtersSlice.actions
+export const { writeToTemplate, deleteFromTemplate, joinFilters, openSidebar } = filtersSlice.actions
 
 export const filtersReducer = filtersSlice.reducer
