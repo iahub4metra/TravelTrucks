@@ -1,3 +1,21 @@
+.sidebar {
+    transform: translateX(-130%);
+    position: absolute;
+    background-color: #fff;
+    border: 1px solid var(--Main);
+    padding: 12px;
+    border-radius: 12px;
+    transition: transform 250ms cubic-bezier(0.445, 0.05, 0.55, 0.95);
+    height: 80vh;
+    overflow: hidden;
+}
+
+.sidebarOpen {
+    transform: translateX(-2%);
+    height: auto;
+    overflow: auto;
+}
+
 .btnSearch {
     border-radius: 200px;
     background: var(--Button, #E44848);
@@ -17,4 +35,13 @@
 
 .btnSearch:hover {
     background-color: var(--Button-Hover);
+}
+
+@media screen and (min-width:1440px) {
+    .sidebar {
+        position: static;
+        transform: translateX(0);
+        border: 0;
+        border-radius: 0;
+    }
 }
