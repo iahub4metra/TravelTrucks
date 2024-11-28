@@ -1,6 +1,6 @@
 .imageCamper {
     width: 292px;
-    height: 320px;
+    max-height: 320px;
     object-fit: cover;
     border-radius: 10px;
 }
@@ -147,9 +147,17 @@
     fill: var(--Button);
 }
 
-@media screen and (min-width:1440px) {
+
+@media screen and (min-width:768px) {
     .innerCard {
         flex-direction: row;
         align-items: normal;
     }
+
+    .upperContCard>h2 {
+        font-size: 20px;
+        line-height: 24px;
+    }
 }
+
+@media screen and (min-width:1440px) {}
