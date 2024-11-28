@@ -6,8 +6,8 @@
 }
 
 .campersListItem {
-    padding: 24px;
-    max-width: 888px;
+    padding: 12px;
+    max-width: 320px;
     border: solid 1px #DADDE1;
     border-radius: 20px;
 }
@@ -32,4 +32,17 @@
 
 .btnLoadMore:hover {
     border-color: var(--Button-Hover);
+}
+
+@media screen and (min-width: 768px) {
+    .campersListItem {
+        max-width: 888px;
+    }
+}
+
+@media screen and (min-width:1440px) {
+    .campersListItem {
+        padding: 24px;
+        max-width: 888px;
+    }
 }
