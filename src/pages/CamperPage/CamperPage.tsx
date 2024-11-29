@@ -6,12 +6,14 @@ import { getCamperById } from "../../redux/campers/operations";
 import CamperDetails from "../../components/CamperDetails/CamperDetails";
 
 const CamperPage = () => {
-    const { camperId } = useParams()
+    const { camperId } = useParams<{ camperId: string }>();
     const dispatch: AppDispatch = useDispatch()
 
 
-    useEffect(()=>{
-        dispatch(getCamperById(camperId))
+    useEffect(() => {
+        if (camperId) {
+            dispatch(getCamperById(camperId))
+        }
     },[dispatch])
 
 
