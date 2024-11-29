@@ -19,7 +19,6 @@ const Layout = () => {
                         <Route path="*" element={<NotFoundPage/>} />
                     </Routes>
                 </Suspense>
-                
             </main>
         </>
         
