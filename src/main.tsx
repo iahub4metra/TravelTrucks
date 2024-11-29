@@ -10,9 +10,9 @@ import './index.css'
 createRoot(document.getElementById('root') as HTMLElement).render(
   <StrictMode>
     <Provider store={store}>
-      <HashRouter>
+      <BrowserRouter>
         <App />
-      </HashRouter>
+      </BrowserRouter>
     </Provider>
   </StrictMode>,
 )
