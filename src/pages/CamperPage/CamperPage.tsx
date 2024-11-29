@@ -6,7 +6,7 @@ import { getCamperById } from "../../redux/campers/operations";
 import CamperDetails from "../../components/CamperDetails/CamperDetails";
 
 const CamperPage = () => {
-    const { camperId = "" } = useParams()
+    const { camperId } = useParams()
     const dispatch: AppDispatch = useDispatch()
 
 
