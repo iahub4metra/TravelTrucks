@@ -1,6 +1,5 @@
 {   
-    "trailingSlash": true,
     "rewrites": [
-        {"source": "/(.*)", "destination": "/index.html", "permanent": false}
+        {"source": "/(.*)", "destination": "/index.html"}
     ]
 }
