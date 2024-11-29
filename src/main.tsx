@@ -3,13 +3,13 @@ import { createRoot } from 'react-dom/client'
 import { BrowserRouter } from 'react-router-dom'
 import { Provider } from 'react-redux'
 import App from './components/App/App.js'
-import './index.css'
 import { store } from './redux/store.js'
+import './index.css'
 
 createRoot(document.getElementById('root') as HTMLElement).render(
   <StrictMode>
     <Provider store={store}>
-      <BrowserRouter basename='/'>
+      <BrowserRouter>
         <App />
       </BrowserRouter>
     </Provider>
