@@ -79,5 +79,7 @@ The build will be generated in the dist folder.
 ## Author
 
 Artem Buhai
+
 Frontend Developer
+
 [GitHub](https://github.com/iahub4metra) | [LinkedIn](https://www.linkedin.com/in/artem-buhai/)
