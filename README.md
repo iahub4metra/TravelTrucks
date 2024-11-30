@@ -40,12 +40,25 @@ cd your-repo-name
 
 Install all necessary dependencies using npm or yarn:
 
-npm install | yarn install
+```bash
+npm install
+```
+
+```bash
+yarn install
+```
 
 ## 3. Start the Development Server
 
 Run the following command to start the local development server:
-npm run dev | yarn dev
+
+```bash
+npm run dev
+```
+
+```bash
+yarn dev
+```
 
 Once the server is running, you will see a URL in the terminal, typically http://localhost:5173. Open this URL in your browser to view the project.
 
@@ -53,7 +66,13 @@ Once the server is running, you will see a URL in the terminal, typically http:/
 
 To create an optimized build of the project, use the following command:
 
-npm run build | yarn build
+```bash
+npm run build
+```
+
+```bash
+yarn build
+```
 
 The build will be generated in the dist folder.
 
