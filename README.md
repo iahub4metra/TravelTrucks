@@ -14,6 +14,15 @@ This is a website for renting campers with a user-friendly interface, product fi
 - Filter products by parameters.
 - Integration with REST API.
 
+### Technologies used
+
+- React
+- TypeScript
+- Vite
+- Redux Toolkit
+- CSS Modules
+- REST API
+
 # Installation and Setup Instructions
 
 Follow these steps to install and run the project locally.
