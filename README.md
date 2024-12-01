@@ -32,7 +32,7 @@ Follow these steps to install and run the project locally.
 First, clone the repository to your local machine:
 
 ```bash
-git clone https://github.com/your-username/your-repo-name.git
+git clone https://github.com/iahub4metra/TravelTrucks
 cd your-repo-name
 ```
 
