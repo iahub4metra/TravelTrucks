@@ -33,7 +33,7 @@ First, clone the repository to your local machine:
 
 ```bash
 git clone https://github.com/iahub4metra/TravelTrucks
-cd your-repo-name
+cd TravelTrucks
 ```
 
 ## 2. Install Dependencies
